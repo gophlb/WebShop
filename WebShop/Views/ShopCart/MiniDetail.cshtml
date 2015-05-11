@@ -1,0 +1,10 @@
+﻿@using Core;
+@model ShopCart
+
+@foreach (ShopCartEntry entry in Model.Entries)
+{            
+    <div>
+        <div>@entry.Product.Name x@(entry.Quantity)</div>
+     </div>
+}
+<div>@Model.Count() products</div>

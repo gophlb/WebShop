@@ -1,0 +1,29 @@
+﻿@using Core;
+@model ShopCart
+
+@{
+    ProductViewModel product = null;
+    decimal productExcVAT = 0;
+    decimal productVAT = 0;
+    decimal productIncVat = 0;
+    
+    decimal totalPrice = 0;
+}
+
+
+@foreach (ShopCartEntry entry in Model.Entries)
+{    
+        product = entry.Product;
+        productExcVAT = product.PriceExcVAT * entry.Quantity;
+        productVAT = product.VAT;
+        productIncVat = product.PriceIncVAT * entry.Quantity;
+        totalPrice += productIncVat;
+    
+    <div>
+        <div>@product.Name x@(entry.Quantity)</div>
+        <div>ExcVAT: @productExcVAT.ToString("c")</div>
+        <div>VAT: @(productVAT)%</div>
+        <div>Subtotal: @productIncVat.ToString("c")</div>
+    </div>
+}
+<div>Total: @totalPrice.ToString("c")</div>

@@ -1,0 +1,38 @@
+﻿@using Core;
+
+@model ProductsListViewModel
+
+@foreach (ProductViewModel product in Model.Products)
+{
+    <div class="product">
+        <h3>@product.Name</h3>
+        <img src="@product.PhotoUrl" />
+        @product.CategoryName
+        <br />
+        @product.Description
+        <h4>@product.PriceIncVAT.ToString("c")</h4>
+
+
+        <input type="button"
+               onclick="addProduct('@Url.Action("AddProduct", "ShopCart", new { reference = product.Reference })'); return false;"
+               value="Add to cart" />
+    </div>
+}
+
+<div>
+    @Pagination(Model.PaginationInfo)
+</div>
+
+
+
+@helper Pagination(PaginationInfo paginationInfo)
+{
+    string selectedClass = "";
+
+    for (int page = 1; page <= paginationInfo.PagesCount; page++)
+    {
+        selectedClass = (page == paginationInfo.CurrentPage) ? "selected btn btn-primary" : "btn btn-default";
+
+        <span onclick="loadPage('@Url.Action("GetProducts", new {page = page})'); return false;" class="clickable @selectedClass">@page</span>
+    }
+}

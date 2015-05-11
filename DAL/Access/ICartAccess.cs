@@ -11,7 +11,5 @@
         void Clear();
 
         int Count();
-
-        void Save();
     }
 }

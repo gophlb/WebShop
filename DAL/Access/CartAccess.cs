@@ -47,12 +47,5 @@ namespace DAL
             Cart cart = Get();
             return cart.Count();
         }
-
-        public void Save() 
-        {
-            Cart cart = Get();
-            //TODO: Convert to Order / OrderLine, Save
-        }
-
     }
 }

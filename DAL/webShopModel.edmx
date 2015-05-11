@@ -38,6 +38,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="ProductReference" Type="nvarchar(max)" Nullable="false" />
           <Property Name="OrderId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Orders">
@@ -135,11 +137,11 @@
             <End Role="Address" EntitySet="Addresses" />
           </AssociationSet>
           <EntitySet Name="Orders" EntityType="webShopModel.Order" />
+          <EntitySet Name="OrderLines" EntityType="webShopModel.OrderLine" />
           <AssociationSet Name="ClientOrder" Association="webShopModel.ClientOrder">
             <End Role="Client" EntitySet="Clients" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
-          <EntitySet Name="OrderLines" EntityType="webShopModel.OrderLine" />
           <AssociationSet Name="OrderOrderLine" Association="webShopModel.OrderOrderLine">
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderLine" EntitySet="OrderLines" />
@@ -193,6 +195,16 @@
           <Property Name="ClientId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="OrderLines" Relationship="webShopModel.OrderOrderLine" FromRole="Order" ToRole="OrderLine" />
         </EntityType>
+        <EntityType Name="OrderLine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="ProductReference" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Order" Relationship="webShopModel.OrderOrderLine" FromRole="OrderLine" ToRole="Order" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+        </EntityType>
         <Association Name="ClientOrder">
           <End Type="webShopModel.Client" Role="Client" Multiplicity="1" />
           <End Type="webShopModel.Order" Role="Order" Multiplicity="*" />
@@ -205,14 +217,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="OrderLine">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Order" Relationship="webShopModel.OrderOrderLine" FromRole="OrderLine" ToRole="Order" />
-          <Property Name="OrderId" Type="Int32" Nullable="false" />
-        </EntityType>
         <Association Name="OrderOrderLine">
           <End Type="webShopModel.Order" Role="Order" Multiplicity="1" />
           <End Type="webShopModel.OrderLine" Role="OrderLine" Multiplicity="*" />
@@ -272,6 +276,8 @@
       <EntityTypeMapping TypeName="IsTypeOf(webShopModel.OrderLine)">
         <MappingFragment StoreEntitySet="OrderLines">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductReference" ColumnName="ProductReference" />
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
         </MappingFragment>
       </EntityTypeMapping>

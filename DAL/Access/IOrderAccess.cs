@@ -2,6 +2,6 @@
 {
     public interface IOrderAccess
     {
-        void Add(Order order);
+        void Checkout(Order order, Client client);
     }
 }

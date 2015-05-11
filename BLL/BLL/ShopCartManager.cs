@@ -19,7 +19,6 @@ namespace BLL
 
 
 
-
         public ShopCartManager(ICartAccess cartAccess, IProductAccess productAccess)
         {
             this.cartAccess = cartAccess;
@@ -55,11 +54,6 @@ namespace BLL
         public int Count()
         {
             return cartAccess.Count();
-        }
-
-        public void Save()
-        {
-            cartAccess.Save();
         }
     }
 }

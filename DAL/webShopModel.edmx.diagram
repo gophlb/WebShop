@@ -10,9 +10,9 @@
         <EntityTypeShape EntityType="webShopModel.City" Width="1.5" PointX="8.625" PointY="0.5" />
         <AssociationConnector Association="webShopModel.ClientAddress" />
         <AssociationConnector Association="webShopModel.CityAddress" />
-        <EntityTypeShape EntityType="webShopModel.Order" Width="1.5" PointX="2.5" PointY="0.5" />
+        <EntityTypeShape EntityType="webShopModel.Order" Width="1.5" PointX="2.5" PointY="0.625" />
+        <EntityTypeShape EntityType="webShopModel.OrderLine" Width="1.5" PointX="0.5" PointY="1" />
         <AssociationConnector Association="webShopModel.ClientOrder" />
-        <EntityTypeShape EntityType="webShopModel.OrderLine" Width="1.5" PointX="0.5" PointY="0.5" />
         <AssociationConnector Association="webShopModel.OrderOrderLine" />
       </Diagram>
     </edmx:Diagrams>

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/10/2015 19:54:38
+-- Date Created: 05/11/2015 21:33:00
 -- Generated from EDMX file: D:\z_workspace\WebShop\DAL\webShopModel.edmx
 -- --------------------------------------------------
 
@@ -17,37 +17,25 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_ClientAddress]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Addresses] DROP CONSTRAINT [FK_ClientAddress];
-GO
 IF OBJECT_ID(N'[dbo].[FK_CityAddress]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Addresses] DROP CONSTRAINT [FK_CityAddress];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ClientOrder]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Orders] DROP CONSTRAINT [FK_ClientOrder];
-GO
-IF OBJECT_ID(N'[dbo].[FK_OrderOrderLine]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[OrderLines] DROP CONSTRAINT [FK_OrderOrderLine];
+IF OBJECT_ID(N'[dbo].[FK_ClientAddress]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Addresses] DROP CONSTRAINT [FK_ClientAddress];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Clients]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Clients];
-GO
 IF OBJECT_ID(N'[dbo].[Addresses]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Addresses];
 GO
 IF OBJECT_ID(N'[dbo].[Cities]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Cities];
 GO
-IF OBJECT_ID(N'[dbo].[Orders]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Orders];
-GO
-IF OBJECT_ID(N'[dbo].[OrderLines]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[OrderLines];
+IF OBJECT_ID(N'[dbo].[Clients]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Clients];
 GO
 
 -- --------------------------------------------------
@@ -92,6 +80,8 @@ GO
 -- Creating table 'OrderLines'
 CREATE TABLE [dbo].[OrderLines] (
     [Id] int IDENTITY(1,1) NOT NULL,
+    [Quantity] int  NOT NULL,
+    [ProductReference] nvarchar(max)  NOT NULL,
     [OrderId] int  NOT NULL
 );
 GO

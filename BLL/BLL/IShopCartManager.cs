@@ -13,7 +13,5 @@ namespace BLL
         void Clear();
 
         int Count();
-
-        void Save();
     }
 }

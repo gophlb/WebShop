@@ -53,9 +53,11 @@
   <ItemGroup>
     <Compile Include="Access\ClientAccess.cs" />
     <Compile Include="Access\CartAccess.cs" />
+    <Compile Include="Access\IOrderAccess.cs" />
     <Compile Include="Access\ICartAccess.cs" />
     <Compile Include="Access\IClientAccess.cs" />
     <Compile Include="Access\IProductAccess.cs" />
+    <Compile Include="Access\OrderAccess.cs" />
     <Compile Include="Access\ProductXmlAccess.cs" />
     <Compile Include="Address.cs">
       <DependentUpon>webShopModel.tt</DependentUpon>

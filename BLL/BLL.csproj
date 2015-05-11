@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\OrderManager.cs" />
+    <Compile Include="BLL\IOrderManager.cs" />
     <Compile Include="BLL\ShopCartManager.cs" />
     <Compile Include="BLL\ClientManager.cs" />
     <Compile Include="BLL\IShopCartManager.cs" />

@@ -1,13 +1,14 @@
-﻿
+﻿using System;
+
 namespace DAL
 {
-    public class ClientAccess : IClientAccess
+    public class OrderAccess : IOrderAccess
     {
-        public void AddClient(Client client)
+        public void Add(Order order)
         {
             using (webShopModelContainer db = new webShopModelContainer())
             {
-                db.Clients.Add(client);
+                db.Orders.Add(order);
                 db.SaveChanges();
             }
         }

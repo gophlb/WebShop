@@ -11,9 +11,7 @@ namespace BLL
 
         static OrderManager()
         {
-            Mapper.CreateMap<ShippingDetails, City>().ForMember(c => c.Id, sd => sd.MapFrom(sde => sde.CityId))
-                                                    .ForMember(c => c.Name, sd => sd.MapFrom(sde => sde.CityName))
-                                                    ;
+            Mapper.CreateMap<ShippingDetails, City>().ForMember(c => c.Id, sd => sd.MapFrom(sde => sde.CityId));
             Mapper.CreateMap<ShippingDetails, Client>();
             Mapper.CreateMap<ShippingDetails, Address>();
             Mapper.CreateMap<CartEntry, OrderLine>();

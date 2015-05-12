@@ -249,6 +249,7 @@
     <Content Include="Views\ShopCart\MiniShopCart.cshtml" />
     <Content Include="Views\ShopCart\Detail.cshtml" />
     <Content Include="Views\ShopCart\MiniDetail.cshtml" />
+    <Content Include="Views\ShopCart\ShippingDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

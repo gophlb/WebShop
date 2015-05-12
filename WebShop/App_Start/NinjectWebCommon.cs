@@ -65,10 +65,12 @@ namespace WebShop.App_Start
             kernel.Bind<IProductAccess>().To<ProductXmlAccess>().WithConstructorArgument("xmlPath", path);
             kernel.Bind<ICartAccess>().To<CartAccess>();
             kernel.Bind<IOrderAccess>().To<OrderAccess>();
+            kernel.Bind<ICityAccess>().To<CityAccess>();
 
             kernel.Bind<IProductManager>().To<ProductManager>();
             kernel.Bind<IShopCartManager>().To<ShopCartManager>();
             kernel.Bind<IOrderManager>().To<OrderManager>();
+            kernel.Bind<ICityManager>().To<CityManager>();
         }        
     }
 }

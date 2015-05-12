@@ -17,8 +17,6 @@ namespace BLL
 
         public int CityId { get; set; }
 
-        public string CityName { get; set; }
-
         public string Email { get; set; }
     }
 }

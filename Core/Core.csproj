@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\ProductsListViewModel.cs" />
+    <Compile Include="Core\CityViewModel.cs" />
     <Compile Include="Core\ShopCart.cs" />
     <Compile Include="Core\ShopCartEntry.cs" />
     <Compile Include="Core\PaginationInfo.cs" />

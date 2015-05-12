@@ -48,7 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\ICityManager.cs" />
     <Compile Include="BLL\IOrderManager.cs" />
+    <Compile Include="BLL\CityManager.cs" />
     <Compile Include="BLL\OrderManager.cs" />
     <Compile Include="BLL\ShippingDetails.cs" />
     <Compile Include="BLL\ShopCartManager.cs" />

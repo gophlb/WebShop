@@ -1,0 +1,35 @@
+﻿@using Core;
+
+@using (Html.BeginForm("Checkout", "ShopCart"))
+{
+    <span>Title</span>
+    <select name="Title">
+        <option selected></option>
+        <option value="Mrs.">Mrs.</option>
+        <option value="Mr.">Mr.</option>
+    </select>
+
+    <span>First name</span>
+    <input type="text" name="FirstName" />
+
+    <span>Last name</span>
+    <input type="text" name="LastName" />
+
+    <span>Street</span>
+    <input type="text" name="Street" />
+
+    <span>Number</span>
+    <input type="text" name="HouseNumber" />
+
+    <span>Zip</span>
+    <input type="text" name="ZipCode" />
+
+    <span>City</span>
+    @Html.DropDownList("CityId", (IEnumerable<SelectListItem>)ViewBag.Cities, "")
+
+    <span>Email</span>
+    <input type="text" name="Email" />
+
+    <input type="submit" value="Proceed to checkout" />
+}
+

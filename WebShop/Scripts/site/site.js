@@ -65,10 +65,10 @@ function viewDetail() {
 }
 
 function checkout() {
-    $.post("ShopCart/Checkout",
+    $.post("ShopCart/ShippingDetails",
         {},
         function (data) {
-            
+            $("#mainContent").html(data);
         }
     ).error(function () { alertify.alert(defaultErrorMessage); });
 }

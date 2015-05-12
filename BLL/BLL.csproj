@@ -50,10 +50,9 @@
   <ItemGroup>
     <Compile Include="BLL\IOrderManager.cs" />
     <Compile Include="BLL\OrderManager.cs" />
+    <Compile Include="BLL\ShippingDetails.cs" />
     <Compile Include="BLL\ShopCartManager.cs" />
-    <Compile Include="BLL\ClientManager.cs" />
     <Compile Include="BLL\IShopCartManager.cs" />
-    <Compile Include="BLL\IClientManager.cs" />
     <Compile Include="BLL\IProductManager.cs" />
     <Compile Include="BLL\ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

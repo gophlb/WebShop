@@ -42,7 +42,6 @@
     <Compile Include="Core\ProductsListViewModel.cs" />
     <Compile Include="Core\ShopCart.cs" />
     <Compile Include="Core\ShopCartEntry.cs" />
-    <Compile Include="Core\ClientViewModel.cs" />
     <Compile Include="Core\PaginationInfo.cs" />
     <Compile Include="Core\ProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

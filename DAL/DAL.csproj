@@ -51,11 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Access\ClientAccess.cs" />
     <Compile Include="Access\CartAccess.cs" />
     <Compile Include="Access\IOrderAccess.cs" />
     <Compile Include="Access\ICartAccess.cs" />
-    <Compile Include="Access\IClientAccess.cs" />
     <Compile Include="Access\IProductAccess.cs" />
     <Compile Include="Access\OrderAccess.cs" />
     <Compile Include="Access\ProductXmlAccess.cs" />
@@ -96,7 +94,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="webShopModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>webShopModel.Designer.cs</LastGenOutput>

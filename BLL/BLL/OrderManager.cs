@@ -1,7 +1,5 @@
-﻿using Core;
-using System;
+﻿using AutoMapper;
 using DAL;
-using AutoMapper;
 
 namespace BLL
 {
@@ -12,7 +10,8 @@ namespace BLL
 
         static OrderManager()
         {
-            Mapper.CreateMap<ClientViewModel, Client>();
+            Mapper.CreateMap<ShippingDetails, Client>();
+            Mapper.CreateMap<ShippingDetails, Address>();
             Mapper.CreateMap<CartEntry, OrderLine>().ForMember(o => o.ProductReference, ce => ce.MapFrom(cep => cep.Product.Reference));
             Mapper.CreateMap<Cart, Order>();
         }
@@ -25,12 +24,14 @@ namespace BLL
         }
 
 
-        public void Ckeckout(ClientViewModel clientVM)
+        public void Ckeckout(ShippingDetails shippingDetails)
         {
             Cart cart = cartAccess.Get();
             Order order = Mapper.Map<Order>(cart);
-            Client client = Mapper.Map<Client>(clientVM);
+            Client client = Mapper.Map<Client>(shippingDetails);
+            Address address = Mapper.Map<Address>(shippingDetails);
 
+            client.Address.Add(address);
             orderAccess.Checkout(order, client);
         }
     }

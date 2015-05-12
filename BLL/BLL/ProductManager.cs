@@ -2,7 +2,6 @@
 using Core;
 using DAL;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BLL
 {

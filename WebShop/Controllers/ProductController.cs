@@ -2,7 +2,6 @@
 using Core;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using System;
 
 namespace WebShop.Controllers
 {

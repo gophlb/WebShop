@@ -1,6 +1,4 @@
-﻿using System;
-using DAL;
-
+﻿
 namespace DAL
 {
     public class Product

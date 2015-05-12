@@ -3,16 +3,13 @@
 
 namespace WebShop.App_Start
 {
-    using System;
-    using System.Web;
-
+    using BLL;
+    using DAL;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
     using Ninject;
     using Ninject.Web.Common;
-
-    using DAL;
-    using BLL;
+    using System;
+    using System.Web;
 
     public static class NinjectWebCommon 
     {
@@ -64,14 +61,12 @@ namespace WebShop.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IClientManager>().To<ClientManager>();
             kernel.Bind<IProductManager>().To<ProductManager>();
             kernel.Bind<IShopCartManager>().To<ShopCartManager>();
             
             string path = System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/webShop.xml");
 
             kernel.Bind<IProductAccess>().To<ProductXmlAccess>().WithConstructorArgument("xmlPath", path);
-            kernel.Bind<IClientAccess>().To<ClientAccess>();
             kernel.Bind<ICartAccess>().To<CartAccess>();
         }        
     }

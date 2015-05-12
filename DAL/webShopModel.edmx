@@ -4,136 +4,107 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="webShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Addresses">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Street" Type="nvarchar" MaxLength="250" />
-          <Property Name="HouseNumber" Type="nvarchar" MaxLength="10" />
-          <Property Name="ZipCode" Type="int" />
-          <Property Name="Client_Id" Type="int" Nullable="false" />
-          <Property Name="City_Id" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Cities">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="Clients">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Title" Type="nvarchar" MaxLength="10" />
-          <Property Name="Email" Type="nvarchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="OrderLines">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Quantity" Type="int" Nullable="false" />
-          <Property Name="ProductReference" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="OrderId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Orders">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ClientId" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_CityAddress">
-          <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
-          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cities">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Addresses">
-              <PropertyRef Name="City_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ClientAddress">
-          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
-          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clients">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Addresses">
-              <PropertyRef Name="Client_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ClientOrder">
-          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clients">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="ClientId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OrderOrderLine">
-          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
-          <End Role="OrderLines" Type="Self.OrderLines" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Orders">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="OrderLines">
-              <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="webShopModelStoreContainer">
-          <EntitySet Name="Addresses" EntityType="Self.Addresses" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OrderLines" EntityType="Self.OrderLines" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_CityAddress" Association="Self.FK_CityAddress">
-            <End Role="Cities" EntitySet="Cities" />
-            <End Role="Addresses" EntitySet="Addresses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ClientAddress" Association="Self.FK_ClientAddress">
-            <End Role="Clients" EntitySet="Clients" />
-            <End Role="Addresses" EntitySet="Addresses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ClientOrder" Association="Self.FK_ClientOrder">
-            <End Role="Clients" EntitySet="Clients" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderOrderLine" Association="Self.FK_OrderOrderLine">
-            <End Role="Orders" EntitySet="Orders" />
-            <End Role="OrderLines" EntitySet="OrderLines" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="webShopModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="webShopModelStoreContainer">
+    <EntitySet Name="Clients" EntityType="webShopModel.Store.Clients" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Addresses" EntityType="webShopModel.Store.Addresses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orders" EntityType="webShopModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderLines" EntityType="webShopModel.Store.OrderLines" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ClientAddress" Association="webShopModel.Store.ClientAddress">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="ClientOrder" Association="webShopModel.Store.ClientOrder">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="OrderOrderLine" Association="webShopModel.Store.OrderOrderLine">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderLine" EntitySet="OrderLines" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="LastName" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Title" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="Email" Type="nvarchar" Nullable="true" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Addresses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Street" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="CityName" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="HouseNumber" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="ZipCode" Type="int" Nullable="true" />
+    <Property Name="Client_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderLines">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="ProductReference" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ClientAddress">
+    <End Role="Client" Type="webShopModel.Store.Clients" Multiplicity="1" />
+    <End Role="Address" Type="webShopModel.Store.Addresses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="Client_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientOrder">
+    <End Role="Client" Type="webShopModel.Store.Clients" Multiplicity="1" />
+    <End Role="Order" Type="webShopModel.Store.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderOrderLine">
+    <End Role="Order" Type="webShopModel.Store.Orders" Multiplicity="1" />
+    <End Role="OrderLine" Type="webShopModel.Store.OrderLines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderLine">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="webShopModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="webShopModelContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Clients" EntityType="webShopModel.Client" />
           <EntitySet Name="Addresses" EntityType="webShopModel.Address" />
-          <EntitySet Name="Cities" EntityType="webShopModel.City" />
           <AssociationSet Name="ClientAddress" Association="webShopModel.ClientAddress">
             <End Role="Client" EntitySet="Clients" />
-            <End Role="Address" EntitySet="Addresses" />
-          </AssociationSet>
-          <AssociationSet Name="CityAddress" Association="webShopModel.CityAddress">
-            <End Role="City" EntitySet="Cities" />
             <End Role="Address" EntitySet="Addresses" />
           </AssociationSet>
           <EntitySet Name="Orders" EntityType="webShopModel.Order" />
@@ -165,25 +136,13 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Street" Type="String" Nullable="true" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="CityName" Type="String" Nullable="true" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="HouseNumber" Type="String" Nullable="true" MaxLength="10" Unicode="true" FixedLength="false" />
           <Property Name="ZipCode" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Client" Relationship="webShopModel.ClientAddress" FromRole="Address" ToRole="Client" />
-          <NavigationProperty Name="City" Relationship="webShopModel.CityAddress" FromRole="Address" ToRole="City" />
-        </EntityType>
-        <EntityType Name="City">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="true" MaxLength="50" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Address" Relationship="webShopModel.CityAddress" FromRole="City" ToRole="Address" />
         </EntityType>
         <Association Name="ClientAddress">
           <End Type="webShopModel.Client" Role="Client" Multiplicity="1" />
-          <End Type="webShopModel.Address" Role="Address" Multiplicity="*" />
-        </Association>
-        <Association Name="CityAddress">
-          <End Type="webShopModel.City" Role="City" Multiplicity="1" />
           <End Type="webShopModel.Address" Role="Address" Multiplicity="*" />
         </Association>
         <EntityType Name="Order">
@@ -251,16 +210,9 @@
         <MappingFragment StoreEntitySet="Addresses">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
           <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
           <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Cities">
-      <EntityTypeMapping TypeName="IsTypeOf(webShopModel.City)">
-        <MappingFragment StoreEntitySet="Cities">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -285,14 +237,6 @@
     <AssociationSetMapping Name="ClientAddress" TypeName="webShopModel.ClientAddress" StoreEntitySet="Addresses">
       <EndProperty Name="Client">
         <ScalarProperty Name="Id" ColumnName="Client_Id" />
-      </EndProperty>
-      <EndProperty Name="Address">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="CityAddress" TypeName="webShopModel.CityAddress" StoreEntitySet="Addresses">
-      <EndProperty Name="City">
-        <ScalarProperty Name="Id" ColumnName="City_Id" />
       </EndProperty>
       <EndProperty Name="Address">
         <ScalarProperty Name="Id" ColumnName="Id" />

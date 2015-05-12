@@ -27,7 +27,6 @@ namespace DAL
     
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Address> Addresses { get; set; }
-        public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderLine> OrderLines { get; set; }
     }

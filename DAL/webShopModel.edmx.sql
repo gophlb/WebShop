@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/11/2015 21:33:00
+-- Date Created: 05/12/2015 22:32:43
 -- Generated from EDMX file: D:\z_workspace\WebShop\DAL\webShopModel.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,14 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_CityAddress]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Addresses] DROP CONSTRAINT [FK_CityAddress];
-GO
 IF OBJECT_ID(N'[dbo].[FK_ClientAddress]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Addresses] DROP CONSTRAINT [FK_ClientAddress];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ClientOrder]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Orders] DROP CONSTRAINT [FK_ClientOrder];
+GO
+IF OBJECT_ID(N'[dbo].[FK_OrderOrderLine]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[OrderLines] DROP CONSTRAINT [FK_OrderOrderLine];
 GO
 
 -- --------------------------------------------------
@@ -31,11 +34,14 @@ GO
 IF OBJECT_ID(N'[dbo].[Addresses]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Addresses];
 GO
-IF OBJECT_ID(N'[dbo].[Cities]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Cities];
-GO
 IF OBJECT_ID(N'[dbo].[Clients]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Clients];
+GO
+IF OBJECT_ID(N'[dbo].[OrderLines]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[OrderLines];
+GO
+IF OBJECT_ID(N'[dbo].[Orders]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Orders];
 GO
 
 -- --------------------------------------------------
@@ -56,17 +62,10 @@ GO
 CREATE TABLE [dbo].[Addresses] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Street] nvarchar(250)  NULL,
+    [CityName] nvarchar(250)  NULL,
     [HouseNumber] nvarchar(10)  NULL,
     [ZipCode] int  NULL,
-    [Client_Id] int  NOT NULL,
-    [City_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'Cities'
-CREATE TABLE [dbo].[Cities] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(50)  NULL
+    [Client_Id] int  NOT NULL
 );
 GO
 
@@ -102,12 +101,6 @@ ADD CONSTRAINT [PK_Addresses]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Cities'
-ALTER TABLE [dbo].[Cities]
-ADD CONSTRAINT [PK_Cities]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Id] in table 'Orders'
 ALTER TABLE [dbo].[Orders]
 ADD CONSTRAINT [PK_Orders]
@@ -137,21 +130,6 @@ GO
 CREATE INDEX [IX_FK_ClientAddress]
 ON [dbo].[Addresses]
     ([Client_Id]);
-GO
-
--- Creating foreign key on [City_Id] in table 'Addresses'
-ALTER TABLE [dbo].[Addresses]
-ADD CONSTRAINT [FK_CityAddress]
-    FOREIGN KEY ([City_Id])
-    REFERENCES [dbo].[Cities]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CityAddress'
-CREATE INDEX [IX_FK_CityAddress]
-ON [dbo].[Addresses]
-    ([City_Id]);
 GO
 
 -- Creating foreign key on [ClientId] in table 'Orders'

@@ -3,33 +3,45 @@
 @using (Html.BeginForm("Checkout", "ShopCart"))
 {
     <span>Title</span>
-    <select name="Title">
+    <select name="Title" id="Title">
         <option selected></option>
         <option value="Mrs.">Mrs.</option>
         <option value="Mr.">Mr.</option>
     </select>
 
     <span>First name</span>
-    <input type="text" name="FirstName" />
+    <input type="text" name="FirstName" id="FirstName" />
 
     <span>Last name</span>
-    <input type="text" name="LastName" />
+    <input type="text" name="LastName" id="LastName" />
+
+    <span>Address</span>
+    <input type="text" name="AutocompleteAddress" id="AutocompleteAddress" />
+
 
     <span>Street</span>
-    <input type="text" name="Street" />
+    <input type="text" name="Street" id="Street" />
 
     <span>Number</span>
-    <input type="text" name="HouseNumber" />
+    <input type="text" name="HouseNumber" id="HouseNumber" />
 
     <span>Zip</span>
-    <input type="text" name="ZipCode" />
+    <input type="text" name="ZipCode" id="ZipCode" />
 
-    <span>City</span>
-    @Html.DropDownList("CityId", (IEnumerable<SelectListItem>)ViewBag.Cities, "")
+    <span>CityName</span>
+    <input type="text" name="CityName" id="CityName" />
 
     <span>Email</span>
-    <input type="text" name="Email" />
+    <input type="text" name="Email" id="Email" />
 
     <input type="submit" value="Proceed to checkout" />
 }
 
+
+
+<script>
+    $(document).ready(function () {
+        autocompleteAddress = new google.maps.places.Autocomplete(document.getElementById('AutocompleteAddress'), { types: ['geocode'] });
+        google.maps.event.addListener(autocompleteAddress, 'place_changed', function () { fillInAddressShippingDetails(); });
+    });
+</script>

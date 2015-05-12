@@ -11,16 +11,13 @@ namespace WebShop.Controllers
         private IShopCartManager shopCartManager;
         private IProductManager productManager;
         private IOrderManager orderManager;
-        private ICityManager cityManager;
 
 
-        public ShopCartController(IShopCartManager shopCartManager, IProductManager productManager,
-                                IOrderManager orderManager, ICityManager cityManager)
+        public ShopCartController(IShopCartManager shopCartManager, IProductManager productManager, IOrderManager orderManager)
         {
             this.shopCartManager = shopCartManager;
             this.productManager = productManager;
             this.orderManager = orderManager;
-            this.cityManager = cityManager;
         }
 
 
@@ -68,10 +65,6 @@ namespace WebShop.Controllers
 
         public ActionResult ShippingDetails()
         {
-            List<CityViewModel> cities = cityManager.GetAll();
-            IEnumerable<SelectListItem> citiesSelectList = cities.Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.Name });
-
-            ViewBag.Cities = citiesSelectList;
             return PartialView();
         }
 

@@ -7,9 +7,7 @@
       <Diagram DiagramId="bedf7d5d392d4d2b8719babc3ae7ebd3" Name="Diagram1" >
         <EntityTypeShape EntityType="webShopModel.Client" Width="1.5" PointX="4.625" PointY="0.5" />
         <EntityTypeShape EntityType="webShopModel.Address" Width="1.5" PointX="6.625" PointY="0.5" />
-        <EntityTypeShape EntityType="webShopModel.City" Width="1.5" PointX="8.625" PointY="0.5" />
         <AssociationConnector Association="webShopModel.ClientAddress" />
-        <AssociationConnector Association="webShopModel.CityAddress" />
         <EntityTypeShape EntityType="webShopModel.Order" Width="1.5" PointX="2.5" PointY="0.625" />
         <EntityTypeShape EntityType="webShopModel.OrderLine" Width="1.5" PointX="0.5" PointY="1" />
         <AssociationConnector Association="webShopModel.ClientOrder" />

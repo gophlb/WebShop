@@ -72,3 +72,32 @@ function checkout() {
         }
     ).error(function () { alertify.alert(defaultErrorMessage); });
 }
+
+
+
+
+
+var autocompleteAddress;
+
+var addressGMapsToShippingModel = {
+    route: "#Street",
+    street_number: "#HouseNumber",
+    locality: "#CityName",
+    postal_code: "#ZipCode"
+};
+
+
+function fillInAddressShippingDetails() {
+    var place = autocompleteAddress.getPlace();
+    var address_components = place.address_components;
+
+    for (var i = 0; i < address_components.length; i++) {
+        var addressType = address_components[i].types[0];
+        var addressGeolocalizable = addressGMapsToShippingModel[addressType];
+        if (addressGeolocalizable) {
+            $(addressGeolocalizable).val(address_components[i]["long_name"]);
+        }
+    }
+}
+
+

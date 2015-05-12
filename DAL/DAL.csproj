@@ -51,18 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Access\CityAccess.cs" />
     <Compile Include="Access\CartAccess.cs" />
-    <Compile Include="Access\ICityAccess.cs" />
     <Compile Include="Access\IOrderAccess.cs" />
     <Compile Include="Access\ICartAccess.cs" />
     <Compile Include="Access\IProductAccess.cs" />
     <Compile Include="Access\OrderAccess.cs" />
     <Compile Include="Access\ProductXmlAccess.cs" />
     <Compile Include="Address.cs">
-      <DependentUpon>webShopModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="City.cs">
       <DependentUpon>webShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Client.cs">

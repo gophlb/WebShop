@@ -11,7 +11,6 @@ namespace BLL
 
         static OrderManager()
         {
-            Mapper.CreateMap<ShippingDetails, City>().ForMember(c => c.Id, sd => sd.MapFrom(sde => sde.CityId));
             Mapper.CreateMap<ShippingDetails, Client>();
             Mapper.CreateMap<ShippingDetails, Address>();
             Mapper.CreateMap<CartEntry, OrderLine>();
@@ -33,10 +32,8 @@ namespace BLL
             order.OrderLines = Mapper.Map<List<OrderLine>>(cart.Entries);
             
             Client client = Mapper.Map<Client>(shippingDetails);
-            //City city = Mapper.Map<City>(shippingDetails);
             Address address = Mapper.Map<Address>(shippingDetails);
 
-            //address.City = city;
             client.Address.Add(address);
             orderAccess.Checkout(order, client);
         }

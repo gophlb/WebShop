@@ -16,10 +16,10 @@ namespace DAL
     {
         public int Id { get; set; }
         public string Street { get; set; }
+        public string CityName { get; set; }
         public string HouseNumber { get; set; }
         public Nullable<int> ZipCode { get; set; }
     
         public virtual Client Client { get; set; }
-        public virtual City City { get; set; }
     }
 }

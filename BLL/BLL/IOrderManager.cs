@@ -3,6 +3,6 @@ namespace BLL
 {
     public interface IOrderManager
     {
-        void Ckeckout(ShippingDetails shippingDetails);
+        void Checkout(ShippingDetails shippingDetails);
     }
 }

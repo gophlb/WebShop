@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DAL;
+using System.Collections.Generic;
 
 namespace BLL
 {
@@ -10,9 +11,12 @@ namespace BLL
 
         static OrderManager()
         {
+            Mapper.CreateMap<ShippingDetails, City>().ForMember(c => c.Id, sd => sd.MapFrom(sde => sde.CityId))
+                                                    .ForMember(c => c.Name, sd => sd.MapFrom(sde => sde.CityName))
+                                                    ;
             Mapper.CreateMap<ShippingDetails, Client>();
             Mapper.CreateMap<ShippingDetails, Address>();
-            Mapper.CreateMap<CartEntry, OrderLine>().ForMember(o => o.ProductReference, ce => ce.MapFrom(cep => cep.Product.Reference));
+            Mapper.CreateMap<CartEntry, OrderLine>();
             Mapper.CreateMap<Cart, Order>();
         }
 
@@ -24,13 +28,17 @@ namespace BLL
         }
 
 
-        public void Ckeckout(ShippingDetails shippingDetails)
+        public void Checkout(ShippingDetails shippingDetails)
         {
             Cart cart = cartAccess.Get();
             Order order = Mapper.Map<Order>(cart);
+            order.OrderLines = Mapper.Map<List<OrderLine>>(cart.Entries);
+            
             Client client = Mapper.Map<Client>(shippingDetails);
+            //City city = Mapper.Map<City>(shippingDetails);
             Address address = Mapper.Map<Address>(shippingDetails);
 
+            //address.City = city;
             client.Address.Add(address);
             orderAccess.Checkout(order, client);
         }

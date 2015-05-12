@@ -61,13 +61,14 @@ namespace WebShop.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IProductManager>().To<ProductManager>();
-            kernel.Bind<IShopCartManager>().To<ShopCartManager>();
-            
             string path = System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/webShop.xml");
-
             kernel.Bind<IProductAccess>().To<ProductXmlAccess>().WithConstructorArgument("xmlPath", path);
             kernel.Bind<ICartAccess>().To<CartAccess>();
+            kernel.Bind<IOrderAccess>().To<OrderAccess>();
+
+            kernel.Bind<IProductManager>().To<ProductManager>();
+            kernel.Bind<IShopCartManager>().To<ShopCartManager>();
+            kernel.Bind<IOrderManager>().To<OrderManager>();
         }        
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace BLL
 {
-    class ShippingDetails
+    public class ShippingDetails
     {
         public string Title { get; set; }
 
@@ -9,13 +9,15 @@ namespace BLL
 
         public string LastName { get; set; }
 
-        public string Address { get; set; }
+        public string Street { get; set; }
 
         public string HouseNumber { get; set; }
 
         public int ZipCode { get; set; }
 
-        public string City { get; set; }
+        public int CityId { get; set; }
+
+        public string CityName { get; set; }
 
         public string Email { get; set; }
     }

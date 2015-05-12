@@ -12,6 +12,10 @@ namespace DAL
 
                 order.Client = client;
                 order.ClientId = client.Id;
+
+                db.OrderLines.AddRange(order.OrderLines);
+                db.SaveChanges();
+
                 db.Orders.Add(order);
                 db.SaveChanges();
             }

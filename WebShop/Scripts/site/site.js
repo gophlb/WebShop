@@ -63,3 +63,12 @@ function viewDetail() {
         }
     ).error(function () { alertify.alert(defaultErrorMessage); });
 }
+
+function checkout() {
+    $.post("ShopCart/Checkout",
+        {},
+        function (data) {
+            
+        }
+    ).error(function () { alertify.alert(defaultErrorMessage); });
+}

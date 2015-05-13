@@ -15,6 +15,7 @@ namespace WebShop
                             "~/Scripts/modernizr-*",
                             "~/Scripts/bootstrap.js",
                             "~/Scripts/respond.js",
+                            "~/Scripts/jquery.validate.min.js",
                             "~/Scripts/alertify/alertify.min.js",
                             "~/Scripts/site/site.js"
                         ));

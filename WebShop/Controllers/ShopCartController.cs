@@ -3,6 +3,7 @@ using Core;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Linq;
+using System;
 
 namespace WebShop.Controllers
 {
@@ -71,9 +72,30 @@ namespace WebShop.Controllers
 
         public ActionResult Checkout(ShippingDetails shippingDetails)
         {
-            orderManager.Checkout(shippingDetails);
+            ProcessResult processResult = new ProcessResult
+            {
+                Result = (int)ProcessResult.RESULT_STATES.OK,
+                Message = "",
+                RedirectTo = ""
+            };
 
-            return Redirect("");
+            try
+            {
+                orderManager.Checkout(shippingDetails);
+            }
+            catch (Exception e)
+            {
+                processResult.Result = (int)ProcessResult.RESULT_STATES.KO;
+                processResult.Message = "Something went wrong";
+                processResult.RedirectTo = "";
+            }
+
+            if (processResult.Result == (int)ProcessResult.RESULT_STATES.OK)
+            {
+                shopCartManager.Clear();
+            }
+
+            return Json(processResult);
         }
 
     }

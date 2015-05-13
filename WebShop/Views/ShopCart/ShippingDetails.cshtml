@@ -1,6 +1,6 @@
 ﻿@using Core;
 
-@using (Html.BeginForm("Checkout", "ShopCart"))
+@using (Html.BeginForm("Checkout", "ShopCart", FormMethod.Post, new { id = "shippingDetailsForm", name = "shippingDetailsForm" }))
 {
     <span>Title</span>
     <select name="Title" id="Title">
@@ -17,8 +17,7 @@
 
     <span>Address</span>
     <input type="text" name="AutocompleteAddress" id="AutocompleteAddress" />
-
-
+    
     <span>Street</span>
     <input type="text" name="Street" id="Street" />
 
@@ -34,7 +33,7 @@
     <span>Email</span>
     <input type="text" name="Email" id="Email" />
 
-    <input type="submit" value="Proceed to checkout" />
+    <input id="submitButton" type="submit" value="Proceed to checkout" />
 }
 
 
@@ -43,5 +42,56 @@
     $(document).ready(function () {
         autocompleteAddress = new google.maps.places.Autocomplete(document.getElementById('AutocompleteAddress'), { types: ['geocode'] });
         google.maps.event.addListener(autocompleteAddress, 'place_changed', function () { fillInAddressShippingDetails(); });
+
+
+        $("#shippingDetailsForm").validate({
+            ignore: [],
+            rules: {
+                'Title': { required: true, minlength: 4, maxlength: 50 },
+                'FirstName': { required: true, minlength: 4, maxlength: 50 },
+                'LastName': { required: true, minlength: 4, maxlength: 50 },
+                'Address': { required: true, minlength: 4, maxlength: 50 },
+                'Street': { required: true, minlength: 4, maxlength: 50 },
+                'HouseNumber': { required: true, minlength: 4, maxlength: 50 },
+                'ZipCode': { required: true, minlength: 4, maxlength: 50 },
+                'CityName': { required: true, minlength: 4, maxlength: 50 },
+                'Email': { required: true, minlength: 5, maxlength: 150 }
+            },
+            messages: {
+                'Title': { required: '', minlength: '', maxlength: '' },
+                'FirstName': { required: '', minlength: '', maxlength: '' },
+                'LastName': { required: '', minlength: '', maxlength: '' },
+                'Address': { required: '', minlength: '', maxlength: '' },
+                'Street': { required: '', minlength: '', maxlength: '' },
+                'HouseNumber': { required: '', minlength: '', maxlength: '' },
+                'ZipCode': { required: '', minlength: '', maxlength: '' },
+                'CityName': { required: '', minlength: '', maxlength: '' },
+                'Email': { required: '', minlength: '', maxlength: '' }
+            },
+            debug: true,
+            showErrors: showFormErrors,
+            submitHandler: function (form) {
+                if(form.isv)
+                $(form).ajaxSubmit();
+            }
+        });
     });
+
+
+    function showFormErrors(errorMap, errorList) {
+        var errorMessage = "<ul class='errorListForm'>";
+        for (var e in errorMap) {
+            errorMessage += "<li><span class='fa fa-exclamation-circle spanErrorListForm'></span><span>" + errorMap[e] + "</span></li>";
+        }
+        errorMessage += "</ul>";
+
+        if (errorMessage !== "<ul class='errorListForm'></ul>") {
+            setTimeout(function () {
+                $("#submitButton").popover({ content: errorMessage, html: true, placement: "top" });
+                $("#submitButton").popover("show");
+            }, 250);
+
+            setTimeout(function () { $("#submitButton").popover("destroy"); }, 3500);
+        }
+    }
 </script>

@@ -2,24 +2,27 @@
 
 @model ProductsListViewModel
 
-@foreach (ProductViewModel product in Model.Products)
-{
-    <div class="product">
-        <h3>@product.Name</h3>
-        <img src="@product.PhotoUrl" />
-        @product.CategoryName
-        <br />
-        @product.Description
-        <h4>@product.PriceIncVAT.ToString("c")</h4>
+<div class="products">
+    @foreach (ProductViewModel product in Model.Products)
+    {
+        <div class="product">
+            <div class="productContent">
+                @* The shop sells colors, so there are no photos of the product. Instead, I place a div with the background of the color. *@
+                <div class="productPhoto" style="background-color: @product.Name;"></div>
+                @*<div class="productPhoto" ><img src="@product.PhotoUrl"/></div>*@
 
+                <span class="productName">@product.Name</span>
 
-        <input type="button"
-               onclick="addProduct('@Url.Action("AddProduct", "ShopCart", new { reference = product.Reference })'); return false;"
-               value="Add to cart" />
-    </div>
-}
+                <span class="productPriceIncVAT">@product.PriceIncVAT.ToString("c")</span>
+            </div>
+            <div class="addItemButton clickable" onclick="addProduct('@Url.Action("AddProduct", "ShopCart", new { reference = product.Reference })'); return false;">
+                <span class="">Want 1!</span>
+            </div>
+        </div>
+    }
+</div>
 
-<div>
+<div class="pagination">
     @Pagination(Model.PaginationInfo)
 </div>
 

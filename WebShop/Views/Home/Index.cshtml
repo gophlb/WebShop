@@ -1,8 +1,5 @@
-﻿<div class="jumbotron">
-    <h1>Web Shop</h1>
-</div>
-<div class="row">
+﻿<div class="row">
     <div class="col-xs-1"></div>
-    <div class="col-xs-10" id="mainContent" class="mainContent">@{Html.RenderAction("GetProducts", "Product");}</div>
+    <div id="mainContent" class="col-xs-10 mainContent">@{Html.RenderAction("GetProducts", "Product");}</div>
     <div class="col-xs-1"></div>
 </div>

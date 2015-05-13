@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{C78C8EC6-592A-4D35-AC24-3A6359C07EE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductXmlGenerator", "ProductXmlGenerator\ProductXmlGenerator.csproj", "{20053953-CD8D-4B78-AFFC-F83ADCFDF3FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C78C8EC6-592A-4D35-AC24-3A6359C07EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C78C8EC6-592A-4D35-AC24-3A6359C07EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C78C8EC6-592A-4D35-AC24-3A6359C07EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20053953-CD8D-4B78-AFFC-F83ADCFDF3FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20053953-CD8D-4B78-AFFC-F83ADCFDF3FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20053953-CD8D-4B78-AFFC-F83ADCFDF3FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20053953-CD8D-4B78-AFFC-F83ADCFDF3FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

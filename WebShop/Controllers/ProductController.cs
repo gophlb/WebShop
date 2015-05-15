@@ -16,7 +16,7 @@ namespace WebShop.Controllers
         }
 
 
-        public ActionResult GetProducts(int page = 1) 
+        public ActionResult GetProducts(int page = 1)
         {
             List<ProductViewModel> products = productManager.GetProducts(page, PRODUCTS_PER_PAGE);
             int productsCount = productManager.Count();
@@ -36,6 +36,14 @@ namespace WebShop.Controllers
             };
 
             return PartialView("ProductsList", productsListViewModel);
+        }
+
+
+        public ActionResult GetProductInformation(string reference)
+        {
+            ProductViewModel product = productManager.GetProductByReference(reference);
+
+            return PartialView("ProductInformation", product);
         }
     }
 }

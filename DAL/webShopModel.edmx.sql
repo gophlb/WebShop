@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/12/2015 22:32:43
+-- Date Created: 05/14/2015 16:51:29
 -- Generated from EDMX file: D:\z_workspace\WebShop\DAL\webShopModel.edmx
 -- --------------------------------------------------
 
@@ -65,6 +65,7 @@ CREATE TABLE [dbo].[Addresses] (
     [CityName] nvarchar(250)  NULL,
     [HouseNumber] nvarchar(10)  NULL,
     [ZipCode] int  NULL,
+    [ExtraInfo] nvarchar(max)  NULL,
     [Client_Id] int  NOT NULL
 );
 GO

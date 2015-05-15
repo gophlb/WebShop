@@ -1,0 +1,31 @@
+﻿@using Core;
+@model ProductViewModel
+
+
+
+<div class="col-xs-12 productInfo">
+    <div class="col-xs-12 col-md-2">
+        <div class="productPhoto" style="background-color: @Model.BackgroundColor;"></div>
+    </div>
+    <div class="col-xs-12 col-md-10">
+        <div class="productName">
+            <span>
+                @Model.Name
+            </span>
+        </div>
+        <div class="productDescription">
+            <span>
+                @Model.Description
+            </span>
+        </div>
+        
+    </div>
+        <div class="productPriceIncVAT col-xs-12">
+            <span class="labelPrice">
+                Price (inc VAT):
+            </span>
+            <span class="price">
+                @Model.PriceIncVAT.ToString("c")
+            </span>
+        </div>
+</div>

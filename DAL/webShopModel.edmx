@@ -42,6 +42,7 @@
     <Property Name="CityName" Type="nvarchar" Nullable="true" MaxLength="250" />
     <Property Name="HouseNumber" Type="nvarchar" Nullable="true" MaxLength="10" />
     <Property Name="ZipCode" Type="int" Nullable="true" />
+    <Property Name="ExtraInfo" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Client_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Orders">
@@ -140,6 +141,7 @@
           <Property Name="HouseNumber" Type="String" Nullable="true" MaxLength="10" Unicode="true" FixedLength="false" />
           <Property Name="ZipCode" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Client" Relationship="webShopModel.ClientAddress" FromRole="Address" ToRole="Client" />
+          <Property Name="ExtraInfo" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <Association Name="ClientAddress">
           <End Type="webShopModel.Client" Role="Client" Multiplicity="1" />
@@ -213,6 +215,7 @@
           <ScalarProperty Name="CityName" ColumnName="CityName" />
           <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
           <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="ExtraInfo" ColumnName="ExtraInfo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

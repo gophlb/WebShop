@@ -7,6 +7,8 @@ namespace Core
 
         public string Name { get; set; }
 
+        public string BackgroundColor { get; set; }
+
         public string CategoryName { get; set; }
 
         public string Description { get; set; }

@@ -20,11 +20,14 @@ namespace WebShop
                             "~/Scripts/site/site.js"
                         ));
 
-            
+
 
             bundles.Add(new StyleBundle("~/Content/styles").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/Site/site.css",
+                      "~/Content/Site/bootstrap.css",
+                      "~/Content/Site/alertify/alertify.core.css"
+                      ));
         }
     }
 }

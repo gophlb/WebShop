@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
+using Utils.Extensions;
 
 namespace DAL
 {
@@ -10,19 +12,27 @@ namespace DAL
         public Cart Get()
         {
             Cart cart;
-
-            if (HttpContext.Current.Session[SESSION_ID] != null)
+            try
             {
-                cart = (Cart)HttpContext.Current.Session[SESSION_ID];
+                if (HttpContext.Current.Session[SESSION_ID] != null)
+                {
+                    cart = (Cart)HttpContext.Current.Session[SESSION_ID];
+                }
+                else
+                {
+                    cart = new Cart();
+                    HttpContext.Current.Session[SESSION_ID] = cart;
+                }
             }
-            else
+            catch (Exception e)
             {
-                cart = new Cart();
-                HttpContext.Current.Session[SESSION_ID] = cart;
+                e.Log("");
+                throw e;
             }
 
             return cart;
         }
+
 
         public void Add(Product product, int quantity = 1)
         {

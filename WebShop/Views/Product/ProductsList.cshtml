@@ -6,17 +6,26 @@
     @foreach (ProductViewModel product in Model.Products)
     {
         <div class="product">
-            <div class="productContent">
+            <div class="productContent clickable" onclick="showProductInformation('@product.Reference'); return false;">
                 @* The shop sells colors, so there are no photos of the product. Instead, I place a div with the background of the color. *@
-                <div class="productPhoto" style="background-color: @product.Name;"></div>
+                <div class="productPhoto" style="background-color: @product.BackgroundColor;"></div>
                 @*<div class="productPhoto" ><img src="@product.PhotoUrl"/></div>*@
 
-                <span class="productName">@product.Name</span>
-
-                <span class="productPriceIncVAT">@product.PriceIncVAT.ToString("c")</span>
+                <div class="productName">
+                    <span>
+                        @product.Name
+                    </span>
+                </div>                
             </div>
+
+            <div class="productPriceIncVAT">
+                <span>
+                    @product.PriceIncVAT.ToString("c")
+                </span>
+            </div>
+
             <div class="addItemButton clickable" onclick="addProduct('@Url.Action("AddProduct", "ShopCart", new { reference = product.Reference })'); return false;">
-                <span class="">Want 1!</span>
+                <img src="~/img/icons/addtocart.png" width="30" height="30" title="Add to cart" />
             </div>
         </div>
     }
@@ -36,6 +45,40 @@
     {
         selectedClass = (page == paginationInfo.CurrentPage) ? "selected btn btn-primary" : "btn btn-default";
 
-        <span onclick="loadPage('@Url.Action("GetProducts", new {page = page})'); return false;" class="clickable @selectedClass">@page</span>
+        <span onclick="loadPage('@Url.Action("GetProducts", new {page = page})', {}, '#mainContent'); return false;" class="clickable @selectedClass">@page</span>
     }
 }
+
+@*
+    #### Another version, showing only some of the pages. ####
+    @helper Pagination(PaginationInfo paginationInfo)
+    {
+        string selectedClass = "";
+        int firstToShow = 0;
+        int lastToShow = paginationInfo.PagesCount;
+        int numberOfPagesToShow = 3;
+
+
+        #### Always show first page ####
+        selectedClass = (1 == paginationInfo.CurrentPage) ? "selected btn btn-primary" : "btn btn-default";
+        <span onclick="loadPage('@Url.Action("GetProducts", new {page = 1})', {}, '#mainContent'); return false;" class="clickable @selectedClass">1</span>
+
+
+        #### Try to show 3 prev and 3 post from the current page ####
+        firstToShow = (paginationInfo.CurrentPage - numberOfPagesToShow > 1) ? paginationInfo.CurrentPage - numberOfPagesToShow : 2;
+        lastToShow = (paginationInfo.CurrentPage + numberOfPagesToShow >= paginationInfo.PagesCount) ? paginationInfo.PagesCount - 1 : paginationInfo.CurrentPage + numberOfPagesToShow;
+
+        for (int page = firstToShow; page <= lastToShow; page++)
+        {
+            selectedClass = (page == paginationInfo.CurrentPage) ? "selected btn btn-primary" : "btn btn-default";
+
+            <span onclick="loadPage('@Url.Action("GetProducts", new {page = page})', {}, '#mainContent'); return false;" class="clickable @selectedClass">@page</span>
+        }
+
+        #### Always show last page, except there's only one page ####
+        if (1 != paginationInfo.PagesCount)
+        {
+            selectedClass = (paginationInfo.PagesCount == paginationInfo.CurrentPage) ? "selected btn btn-primary" : "btn btn-default";
+            <span onclick="loadPage('@Url.Action("GetProducts", new { page = paginationInfo.PagesCount })', {}, '#mainContent'); return false;" class="clickable @selectedClass">@paginationInfo.PagesCount</span>
+        }
+    }*@

@@ -19,6 +19,7 @@ namespace DAL
         public string CityName { get; set; }
         public string HouseNumber { get; set; }
         public Nullable<int> ZipCode { get; set; }
+        public string ExtraInfo { get; set; }
     
         public virtual Client Client { get; set; }
     }

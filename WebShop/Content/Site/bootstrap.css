@@ -1,0 +1,15 @@
+﻿.modal-header {
+    border-bottom: 0 none;
+}
+
+.modal-content {
+    border-radius: 0px;
+}
+
+.btn {
+    border-radius: 0px;
+}
+
+.modal-body {
+    display: inline-block;
+}

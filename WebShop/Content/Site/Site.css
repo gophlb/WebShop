@@ -1,0 +1,134 @@
+﻿@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/roboto-regular.woff');
+}
+
+body {
+    font-family: 'Roboto';
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.clickable {
+    cursor: pointer;
+}
+
+.mainContent {
+    margin-top: 20px;
+}
+
+.products {
+    width: 100%;
+    padding: 20px;
+    display: inline-block;
+    position: relative;
+    overflow-y: auto;
+}
+
+.product {
+    width: 180px;
+    height: 200px;
+    text-align: center;
+    margin: 14px;
+    position: relative;
+    display: inline-block;
+    float: left;
+    border: 1px solid #888;
+    padding: 10px;
+}
+
+.productContent {
+    width: 100%;
+    text-align: center;
+    padding: 6px;
+    position: relative;
+    display: inline-block;
+}
+
+.productPhoto {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    display: inline-block;
+    border-radius: 40px;
+    border: 1px solid #444;
+}
+
+.productName {
+    width: 100%;
+}
+
+    .productName span {
+        color: #888;
+        font-size: 1.5em;
+    }
+
+.productPriceIncVAT {
+    bottom: 5px;
+    position: absolute;
+    right: 30px;
+    text-align: right;
+    width: 100%;
+}
+
+    .productPriceIncVAT span {
+        color: #888;
+        font-size: 1.3em;
+    }
+
+
+
+.addItemButton {
+    width: auto;
+    position: absolute;
+    bottom: -24px;
+    right: -24px;
+    background-color: #fff;
+    border: 1px solid #888;
+    border-radius: 24px;
+    width: 48px;
+    height: 48px;
+    padding: 8px 0 0 3px;
+}
+
+
+
+
+
+.pagination {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+}
+
+
+
+.productInfo {
+    display: inline-block;
+    position: relative;
+    margin-top: -20px;
+}
+
+    .productInfo .productPriceIncVAT {
+        position: relative;
+        display: inline-block;
+        text-align: right;
+        margin-top: 20px;
+    }

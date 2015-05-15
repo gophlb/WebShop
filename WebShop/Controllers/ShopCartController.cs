@@ -83,11 +83,11 @@ namespace WebShop.Controllers
             {
                 orderManager.Checkout(shippingDetails);
             }
-            catch (Exception e)
+            catch
             {
                 processResult.Result = (int)ProcessResult.RESULT_STATES.KO;
                 processResult.Message = "Something went wrong";
-                processResult.RedirectTo = "";
+                processResult.RedirectTo = "Home/Greeting";
             }
 
             if (processResult.Result == (int)ProcessResult.RESULT_STATES.OK)

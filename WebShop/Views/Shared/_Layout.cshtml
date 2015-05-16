@@ -5,31 +5,39 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/styles")
+
+    
+    @Scripts.Render("~/bundles/scripts")
+    <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Web Shop", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    @Html.ActionLink("Web Shop", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li id="miniShopCart">@{Html.RenderAction("MiniShopCart", "ShopCart");}</li>
+                    </ul>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li id="miniShopCart">@{Html.RenderAction("MiniShopCart", "ShopCart");}</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+        </div>*@
+
+
     <div class="container body-content">
         @RenderBody()
     </div>
+
     
-    @Scripts.Render("~/bundles/scripts")
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+    <div id="cartTab" class="cartTab clickable" onclick="showCartMiniDetail(); return false;" title="View cart">
+        <span id="totalProducts" class="badge totalProducts">0</span>
+        <img src="~/img/icons/addtocart.png" width="50" height="50" />
+    </div>
+
+
+
 
     @RenderSection("scripts", required: false)
 </body>

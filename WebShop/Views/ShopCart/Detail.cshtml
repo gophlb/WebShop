@@ -6,27 +6,45 @@
     decimal productExcVAT = 0;
     decimal productVAT = 0;
     decimal productIncVat = 0;
-    
+
     decimal totalPrice = 0;
 }
 
+<div class="detailShopCart col-xs-12">
+    <div class="productLines col-xs-12">
+        @foreach (ShopCartEntry entry in Model.Entries)
+        {
+            product = entry.Product;
+            productExcVAT = product.PriceExcVAT * entry.Quantity;
+            productVAT = product.VAT;
+            productIncVat = product.PriceIncVAT * entry.Quantity;
+            totalPrice += productIncVat;
 
-@foreach (ShopCartEntry entry in Model.Entries)
-{    
-        product = entry.Product;
-        productExcVAT = product.PriceExcVAT * entry.Quantity;
-        productVAT = product.VAT;
-        productIncVat = product.PriceIncVAT * entry.Quantity;
-        totalPrice += productIncVat;
-    
-    <div>
-        <div>@product.Name x@(entry.Quantity)</div>
-        <div>ExcVAT: @productExcVAT.ToString("c")</div>
-        <div>VAT: @(productVAT)%</div>
-        <div>Subtotal: @productIncVat.ToString("c")</div>
+
+            <div class="productLine col-xs-12">
+                <div class="productPhoto col-xs-6 col-md-1" style="background-color: @entry.Product.BackgroundColor;"></div>
+                <div class="productName col-xs-6 col-md-11">
+                    <span>@entry.Product.Name</span>
+                    <span>x@(entry.Quantity)</span>
+                    <span>@productExcVAT.ToString("c") (+@(productVAT)% VAT)</span>
+                    <span class="subtotal">Subtotal: @productIncVat.ToString("c")</span>
+                </div>
+            </div>
+        }
+        <div class="totalProducts col-xs-12">
+            <div class="col-xs-6">
+                <span>Total: @totalPrice.ToString("c")</span>
+            </div>
+            <div class="col-xs-6 actionButton">
+                <button type="button" class="shopCartDetailButton btn btn-primary" onclick="checkout(); return false;">Proceed to checkout</button>
+            </div>
+        </div>
     </div>
-}
-<div>Total: @totalPrice.ToString("c")</div>
+</div>
 
 
-<div onclick="checkout(); return false;">Proceed to checkout</div>
+<script>
+    $(document).ready(function () {
+        $("#cartTab").hide();
+    });
+</script>

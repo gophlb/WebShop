@@ -45,7 +45,7 @@ textarea {
     width: 180px;
     height: 200px;
     text-align: center;
-    margin: 14px;
+    margin: 18px 20px;
     position: relative;
     display: inline-block;
     float: left;
@@ -71,7 +71,7 @@ textarea {
 }
 
 .productName {
-    width: 100%;
+    width: auto;
 }
 
     .productName span {
@@ -100,7 +100,8 @@ textarea {
     bottom: -24px;
     right: -24px;
     background-color: #fff;
-    border: 1px solid #888;
+    border-left: 1px solid #888;
+    border-top: 1px solid #888;
     border-radius: 24px;
     width: 48px;
     height: 48px;
@@ -123,7 +124,6 @@ textarea {
 .productInfo {
     display: inline-block;
     position: relative;
-    margin-top: -20px;
 }
 
     .productInfo .productPriceIncVAT {
@@ -132,3 +132,72 @@ textarea {
         text-align: right;
         margin-top: 20px;
     }
+
+.cartTab {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+    .cartTab .totalProducts {
+        position: absolute;
+        display: inline-block;
+        left: 0;
+        top: -5px;
+        font-size: 1.5em;
+    }
+
+
+.miniDetailShopCart, .detailShopCart {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.miniDetailShopCart .actionButton, .detailShopCart  .actionButton{
+    text-align: right;
+}
+
+    .miniDetailShopCart .productLines {
+        max-height: 450px;
+        overflow-y: auto;
+    }
+
+
+    .miniDetailShopCart .productLine, .detailShopCart .productLine {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+        .miniDetailShopCart .productLine .productPhoto, .detailShopCart .productLine .productPhoto {
+            position: relative;
+            display: inline-block;
+        }
+
+        .miniDetailShopCart .productLine .productName, .detailShopCart .productLine .productName {
+            position: relative;
+            display: inline-block;
+        }
+
+            .miniDetailShopCart .productLine .productName span, .detailShopCart .productLine .productName span {
+                display: block;
+            }
+
+    .miniDetailShopCart .totalProducts, .detailShopCart .totalProducts {
+        border-top: 1px solid #000;
+        margin-top: 20px;
+        padding-top: 20px;
+    }
+
+    .miniDetailShopCart .totalProducts span, .detailShopCart .totalProducts span{
+        font-size: 1.25em;
+        color: #000;
+        font-weight:bold;
+    }
+
+span.subtotal {
+    color: #444;
+}

@@ -2,20 +2,21 @@
 
 @model ProductsListViewModel
 
+
 <div class="products">
     @foreach (ProductViewModel product in Model.Products)
     {
         <div class="product">
-            <div class="productContent clickable" onclick="showProductInformation('@product.Reference'); return false;">
+            <div class="productcontent clickable" onclick="showProductInformation('@product.Reference'); return false;">
                 @* The shop sells colors, so there are no photos of the product. Instead, I place a div with the background of the color. *@
                 <div class="productPhoto" style="background-color: @product.BackgroundColor;"></div>
-                @*<div class="productPhoto" ><img src="@product.PhotoUrl"/></div>*@
+                @*<div class="productPhoto"><img src="@product.PhotoUrl"/></div>*@
 
                 <div class="productName">
                     <span>
                         @product.Name
                     </span>
-                </div>                
+                </div>
             </div>
 
             <div class="productPriceIncVAT">
@@ -35,6 +36,12 @@
     @Pagination(Model.PaginationInfo)
 </div>
 
+<script>
+    $(document).ready(function () {
+        getProductsCount();
+        $("#cartTab").show();
+    });
+</script>
 
 
 @helper Pagination(PaginationInfo paginationInfo)

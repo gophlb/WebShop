@@ -33,28 +33,24 @@ function addProduct(url) {
         url,
         {},
         function (data) {
-            updateShopCart();
+            $("#totalProducts").text(data);
         }
     ).error(function () { alertify.alert(defaultErrorMessage); });
 }
 
-
-function updateShopCart() {
-    loadPage("ShopCart/MiniShopCart", {}, "#miniShopCart");
+function getProductsCount() {
+    loadPage("ShopCart/GetProductsCount", {}, "#totalProducts");
 }
 
 
-function showCartMiniDetail(source) {
+
+
+function showCartMiniDetail() {
     $.get("ShopCart/MiniDetail",
         {},
         function (data) {
-            $(source).popover({
-                content: data,
-                html: "true",
-                placement: "bottom",
-                container: "body"
-            });
-            $(source).popover("show");
+            $("#modalContent").html(data);
+            $("#modal").modal();
         }
     ).error(function () { alertify.alert(defaultErrorMessage); });
 }
@@ -65,6 +61,7 @@ function hideCartMiniDetail(source) {
 }
 
 function viewDetail() {
+    closeModal();
     loadPage("ShopCart/Detail", {}, "#mainContent");
 }
 

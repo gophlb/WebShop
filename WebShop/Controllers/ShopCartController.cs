@@ -40,11 +40,10 @@ namespace WebShop.Controllers
 
         public ActionResult AddProduct(string reference, int quantity = 1)
         {
-            string result = "";
-
             shopCartManager.Add(reference, quantity);
 
-            return Content(result);
+            int productsCount = shopCartManager.Count();
+            return Content(productsCount.ToString());
         }
 
 
@@ -57,10 +56,11 @@ namespace WebShop.Controllers
             return Content(result);
         }
 
-        public ActionResult MiniShopCart()
+
+        public ActionResult GetProductsCount()
         {
-            ViewBag.ProductsCount = shopCartManager.Count();
-            return PartialView();
+            int productsCount = shopCartManager.Count();
+            return Content(productsCount.ToString());
         }
 
 

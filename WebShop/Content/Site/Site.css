@@ -5,25 +5,21 @@
     src: url('/fonts/roboto-regular.woff');
 }
 
+.logo {
+    padding-top: 10px;
+}
+
 body {
     font-family: 'Roboto';
     padding-top: 50px;
     padding-bottom: 20px;
 }
 
-/* Set padding to keep content from hitting the edges */
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
 
 .clickable {
     cursor: pointer;
@@ -156,9 +152,9 @@ textarea {
     display: inline-block;
 }
 
-.miniDetailShopCart .actionButton, .detailShopCart  .actionButton{
-    text-align: right;
-}
+    .miniDetailShopCart .actionButton, .detailShopCart .actionButton {
+        text-align: right;
+    }
 
     .miniDetailShopCart .productLines {
         max-height: 450px;
@@ -192,12 +188,30 @@ textarea {
         padding-top: 20px;
     }
 
-    .miniDetailShopCart .totalProducts span, .detailShopCart .totalProducts span{
-        font-size: 1.25em;
-        color: #000;
-        font-weight:bold;
-    }
+        .miniDetailShopCart .totalProducts span, .detailShopCart .totalProducts span {
+            font-size: 1.25em;
+            color: #000;
+            font-weight: bold;
+        }
 
 span.subtotal {
     color: #444;
 }
+
+
+.shippingDetailsFormSection {
+    border: 1px solid #888;
+    float: left;
+    padding: 10px;
+    height: 70px;
+}
+
+    .shippingDetailsFormSection .shippingDetailsFormInput input, .shippingDetailsFormSection .shippingDetailsFormInput select {
+        border: 0 none;
+        width: 100%;
+    }
+
+    .shippingDetailsFormSection .shippingDetailsFormLabel label {
+        color: #bbb;
+        font-size: 1.25em;
+    }

@@ -1,5 +1,10 @@
 ﻿body {
-    padding-top: 0;
+    padding-top: 50px;
+}
+
+.navbar {
+    min-height: 70px;
+    background-color: #fff;
 }
 
 .modal-header {
@@ -22,4 +27,8 @@
 .badge {
     background-color: #000;
     color: #fff;
+}
+
+label {
+    font-weight: normal;
 }

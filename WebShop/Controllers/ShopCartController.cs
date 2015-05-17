@@ -76,7 +76,7 @@ namespace WebShop.Controllers
             {
                 Result = (int)ProcessResult.RESULT_STATES.OK,
                 Message = "",
-                RedirectTo = ""
+                RedirectTo = "/Home/Greeting"
             };
 
             try
@@ -87,7 +87,7 @@ namespace WebShop.Controllers
             {
                 processResult.Result = (int)ProcessResult.RESULT_STATES.KO;
                 processResult.Message = "Something went wrong";
-                processResult.RedirectTo = "Home/Greeting";
+                processResult.RedirectTo = "";
             }
 
             if (processResult.Result == (int)ProcessResult.RESULT_STATES.OK)

@@ -172,6 +172,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShopCartController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -261,8 +262,8 @@
     <Content Include="Views\ShopCart\Detail.cshtml" />
     <Content Include="Views\ShopCart\MiniDetail.cshtml" />
     <Content Include="Views\ShopCart\ShippingDetails.cshtml" />
-    <Content Include="Views\Error\ups500.cshtml" />
-    <Content Include="Views\Error\ups400.cshtml" />
+    <None Include="Views\Error\Error.cshtml" />
+    <None Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Home\Greeting.cshtml" />
     <Content Include="Views\Product\ProductInformation.cshtml" />
   </ItemGroup>

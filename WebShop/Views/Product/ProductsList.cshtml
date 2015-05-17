@@ -4,31 +4,38 @@
 
 
 <div class="products">
-    @foreach (ProductViewModel product in Model.Products)
+    @if (Model.Products == null || !Model.Products.Any())
     {
-        <div class="product">
-            <div class="productcontent clickable" onclick="showProductInformation('@product.Reference'); return false;">
-                @* The shop sells colors, so there are no photos of the product. Instead, I place a div with the background of the color. *@
-                <div class="productPhoto" style="background-color: @product.BackgroundColor;"></div>
-                @*<div class="productPhoto"><img src="@product.PhotoUrl"/></div>*@
+        <span>Sorry to say this, but there are no products available at this moment. Please come back to check later :)</span>
+    }
+    else
+    {
+        foreach (ProductViewModel product in Model.Products)
+        {
+            <div class="product">
+                <div class="productcontent clickable" onclick="showProductInformation('@product.Reference'); return false;">
+                    @* The shop sells colors, so there are no photos of the product. Instead, I place a div with the background of the color. *@
+                    <div class="productPhoto" style="background-color: @product.BackgroundColor;"></div>
+                    @*<div class="productPhoto"><img src="@product.PhotoUrl"/></div>*@
 
-                <div class="productName">
+                    <div class="productName">
+                        <span>
+                            @product.Name
+                        </span>
+                    </div>
+                </div>
+
+                <div class="productPriceIncVAT">
                     <span>
-                        @product.Name
+                        @product.PriceIncVAT.ToString("c")
                     </span>
                 </div>
-            </div>
 
-            <div class="productPriceIncVAT">
-                <span>
-                    @product.PriceIncVAT.ToString("c")
-                </span>
+                <div class="addItemButton clickable" onclick="addProduct('@Url.Action("AddProduct", "ShopCart", new { reference = product.Reference })'); return false;">
+                    <img src="~/img/icons/addtocart.png" width="30" height="30" title="Add to cart" />
+                </div>
             </div>
-
-            <div class="addItemButton clickable" onclick="addProduct('@Url.Action("AddProduct", "ShopCart", new { reference = product.Reference })'); return false;">
-                <img src="~/img/icons/addtocart.png" width="30" height="30" title="Add to cart" />
-            </div>
-        </div>
+        }
     }
 </div>
 

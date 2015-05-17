@@ -7,11 +7,11 @@ using Utils.Extensions;
 
 namespace DAL
 {
-    public class ProductXmlAccess : IProductAccess
+    public class ProductAccess : IProductAccess
     {
         private readonly string xmlPath;
 
-        public ProductXmlAccess(string xmlPath)
+        public ProductAccess(string xmlPath)
         {
             this.xmlPath = xmlPath;
         }

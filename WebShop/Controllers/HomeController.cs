@@ -9,5 +9,10 @@ namespace WebShop.Controllers
             ViewBag.Title = "Web Shop";
             return View();
         }
+
+        public ActionResult Greeting()
+        {
+            return PartialView();
+        }
     }
 }

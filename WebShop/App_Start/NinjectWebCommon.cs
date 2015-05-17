@@ -62,7 +62,7 @@ namespace WebShop.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             string path = System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/webShop.xml");
-            kernel.Bind<IProductAccess>().To<ProductXmlAccess>().WithConstructorArgument("xmlPath", path);
+            kernel.Bind<IProductAccess>().To<ProductAccess>().WithConstructorArgument("xmlPath", path);
             kernel.Bind<ICartAccess>().To<CartAccess>();
             kernel.Bind<IOrderAccess>().To<OrderAccess>();
 

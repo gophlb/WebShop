@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>WebApi</title>
+
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/Site/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Site/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div id="ProductsList" class="col-xs-6">
+        </div>
+
+    </div>
+
+
+    <div id="modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <div id="modalContent" class="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script id="productMiniTemplate" type="text/x-jsrender">
+        <div class="row webapiOverviewProductRow">
+            <div class="col-xs-12 col-md-10">
+                <div class="col-xs-12">
+                    <div class="col-xs-12 col-md-4"><span>Name:</span></div>
+                    <div class="col-xs-12 col-md-8"><span>{{:Name}}</span></div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="col-xs-12 col-md-4"><span>Price (exc VAT):</span></div>
+                    <div class="col-xs-12 col-md-8"><span>&pound;{{:PriceExcVAT}}</span></div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-2">
+                <button type="button" class="btn btn-primary" onclick="showProductInformationWebApi('{{:Reference}}'); return false;">View details</button>
+            </div>
+        </div>
+    </script>
+
+    <script id="productDetailTemplate" type="text/x-jsrender">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="col-xs-12 col-md-4"><span>Name:</span></div>
+                <div class="col-xs-12 col-md-8"><span>{{:Name}}</span></div>
+            </div>
+            <div class="col-xs-12">
+                <div class="col-xs-12 col-md-4"><span>Reference:</span></div>
+                <div class="col-xs-12 col-md-8"><span>{{:Reference}}</span></div>
+            </div>
+            <div class="col-xs-12">
+                <div class="col-xs-12 col-md-4"><span>Description:</span></div>
+                <div class="col-xs-12 col-md-8"><span>{{:Description}}</span></div>
+            </div>
+            <div class="col-xs-12">
+                <div class="col-xs-12 col-md-4"><span>Category:</span></div>
+                <div class="col-xs-12 col-md-8"><span>{{:CategoryName}}</span></div>
+            </div>
+            <div class="col-xs-12">
+                <div class="col-xs-12 col-md-4"><span>Price (exc VAT):</span></div>
+                <div class="col-xs-12 col-md-8"><span>&pound;{{:PriceExcVAT}}</span></div>
+            </div>
+            <div class="col-xs-12">
+                <div class="col-xs-12 col-md-4"><span>VAT:</span></div>
+                <div class="col-xs-12 col-md-8"><span>{{:VAT}}%</span></div>
+            </div>
+            <div class="col-xs-12">
+                <div class="col-xs-12 col-md-4"><span>Price (inc VAT):</span></div>
+                <div class="col-xs-12 col-md-8"><span>&pound;{{:PriceIncVAT}}</span></div>
+            </div>
+        </div>
+    </script>
+
+    <script src="Scripts/jquery-2.1.3.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jsrender.min.js"></script>
+    <script>
+        var apiUrl = 'api/WebApiProduct';
+
+        $(document).ready(function () {
+            $.getJSON(apiUrl).done(function (data) {
+                var productTemplate = $.templates("#productMiniTemplate");
+                var htmlOutput = productTemplate.render(data);
+                $("#ProductsList").html(htmlOutput);
+            });
+        });
+
+
+        function showProductInformationWebApi(reference) {
+            $.getJSON(apiUrl + '/' + reference)
+                    .done(function (data) {
+                        var productTemplate = $.templates("#productDetailTemplate");
+                        var htmlOutput = productTemplate.render(data);
+
+                        $("#modalContent").html(htmlOutput);
+                        $("#modal").modal();
+                    });
+        }
+    </script>
+</body>
+</html>

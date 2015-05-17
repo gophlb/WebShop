@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>WebApi test</title>
+
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/Site/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Site/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="webapiTestSection col-xs-6">
+            <span>All products (JSON)</span>
+            <div class="col-xs-12">
+                <textarea id="allProductsJSON"></textarea>
+            </div>
+        </div>
+
+        <div class="webapiTestSection col-xs-6">
+            <span>All products (XML)</span>
+            <div class="col-xs-12">
+                <textarea id="allProductsXML"></textarea>
+            </div>
+        </div>
+
+        <div class="webapiTestSection col-xs-6">
+            <span>Search by reference</span>
+            <input type="text" id="reference" />
+            <button type="button" class="btn btn-primary" onclick="findProduct();">Search</button>
+
+            <div class="col-xs-12">
+                <textarea id="product"></textarea>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="Scripts/jquery-2.1.3.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script>
+        var apiUrl = 'api/WebApiProduct';
+
+        $(document).ready(function () {
+            $.getJSON(apiUrl).done(function (data) {
+                $("#allProductsJSON").html(JSON.stringify(data, null, '    '));
+            });
+
+            $.ajax({
+                url: apiUrl,
+                dataType: "xml",
+                success: function (data) {
+                    $("#allProductsXML").html(new XMLSerializer().serializeToString(data));
+                }
+            });
+        });
+
+
+        function findProduct() {
+            var reference = $('#reference').val();
+            $.getJSON(apiUrl + '/' + reference)
+                .done(function (data) {
+                    $('#product').html(JSON.stringify(data, null, '    '));
+                })
+                .fail(function (jqXHR, textStatus, error) {
+                    $('#product').html("Product not found");
+                });
+        }
+    </script>
+</body>
+</html>

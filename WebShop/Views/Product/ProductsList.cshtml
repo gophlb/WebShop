@@ -2,11 +2,14 @@
 
 @model ProductsListViewModel
 
+@{
+    bool isProductListEmpty = Model.Products == null || !Model.Products.Any();
+}
 
 <div class="products">
-    @if (Model.Products == null || !Model.Products.Any())
+    @if (isProductListEmpty)
     {
-        <span>Sorry to say this, but there are no products available at this moment. Please come back to check later :)</span>
+        <span>Sorry to say this, but there are no products available at this moment. Please come back later to check again :)</span>
     }
     else
     {

@@ -8,36 +8,56 @@
     decimal productIncVat = 0;
 
     decimal totalPrice = 0;
+
+    bool isCartEmpty = Model.Entries == null || !Model.Entries.Any();
 }
 
 <div class="detailShopCart col-xs-12">
     <div class="productLines col-xs-12">
-        @foreach (ShopCartEntry entry in Model.Entries)
+        @if (isCartEmpty)
         {
-            product = entry.Product;
-            productExcVAT = product.PriceExcVAT * entry.Quantity;
-            productVAT = product.VAT;
-            productIncVat = product.PriceIncVAT * entry.Quantity;
-            totalPrice += productIncVat;
+            <span>
+                Looks like you haven't added any product yet :(
+                <br />
+                Would you fancy some more shopping? Click <strong>@Html.ActionLink("HERE", "Index", "Home")</strong>
+            </span>
+        }
+        else
+        {
+            foreach (ShopCartEntry entry in Model.Entries)
+            {
+                product = entry.Product;
+                productExcVAT = product.PriceExcVAT * entry.Quantity;
+                productVAT = product.VAT;
+                productIncVat = product.PriceIncVAT * entry.Quantity;
+                totalPrice += productIncVat;
 
 
-            <div class="productLine col-xs-12">
-                <div class="productPhoto col-xs-6 col-md-1" style="background-color: @entry.Product.BackgroundColor;"></div>
-                <div class="productName col-xs-6 col-md-11">
-                    <span>@entry.Product.Name</span>
-                    <span>x@(entry.Quantity)</span>
-                    <span>@productExcVAT.ToString("c") (+@(productVAT)% VAT)</span>
-                    <span class="subtotal">Subtotal: @productIncVat.ToString("c")</span>
+                <div id="productLine_@entry.Product.Reference" class="productLine col-xs-12">
+                    <div class="productPhoto col-xs-6 col-md-1" style="background-color: @entry.Product.BackgroundColor;"></div>
+                    <div class="productName col-xs-6 col-md-11">
+                        <span>@entry.Product.Name</span>
+                        <span>
+                            x@(entry.Quantity)
+                            <button type="button" class="btn btn-primary" onclick="removeProduct('@entry.Product.Reference', 1); return false;">Remove one</button>
+                            <button type="button" class="btn btn-primary" onclick="removeProduct('@entry.Product.Reference', @entry.Quantity); return false;">Remove all</button>
+                        </span>
+                        <span>@productExcVAT.ToString("c") (+@(productVAT)% VAT)</span>
+                        <span class="subtotal">Subtotal: @productIncVat.ToString("c")</span>
+                    </div>
                 </div>
-            </div>
+            }
         }
         <div class="totalProducts col-xs-12">
             <div class="col-xs-6">
                 <span>Total: @totalPrice.ToString("c")</span>
             </div>
-            <div class="col-xs-6 actionButton">
-                <button type="button" class="shopCartDetailButton btn btn-primary" onclick="checkout(); return false;">Proceed to checkout</button>
-            </div>
+            @if (!isCartEmpty)
+            {
+                <div class="col-xs-6 actionButton">
+                    <button type="button" class="shopCartDetailButton btn btn-primary" onclick="checkout(); return false;">Proceed to checkout</button>
+                </div>
+            }
         </div>
     </div>
 </div>

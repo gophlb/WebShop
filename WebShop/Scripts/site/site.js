@@ -38,6 +38,27 @@ function addProduct(url) {
     ).error(function () { alertify.alert(defaultErrorMessage); });
 }
 
+
+function removeProduct(reference, quantity) {
+    $.post(
+        "/ShopCart/RemoveProduct",
+        {reference: reference, quantity: quantity},
+        function (data) {
+            if (data.Message !== "") {
+                alertify.alert(data.Message);
+            }
+            else {
+                //Should update the Total price too
+                //$("#productLine_" + reference).remove();
+                //getProductsCount();
+                loadPage(data.RedirectTo, {}, "#mainContent");
+            }
+        }
+    );
+}
+
+
+
 function getProductsCount() {
     loadPage("/ShopCart/GetProductsCount", {}, "#totalProducts");
 }

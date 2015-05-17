@@ -49,11 +49,25 @@ namespace WebShop.Controllers
 
         public ActionResult RemoveProduct(string reference, int quantity = 1)
         {
-            string result = "";
+            ProcessResult processResult = new ProcessResult
+            {
+               Result = (int)ProcessResult.RESULT_STATES.OK,
+               Message = "",
+               RedirectTo = "/ShopCart/Detail"
+            };
 
-            shopCartManager.Remove(reference, quantity);
+            try
+            {
+                shopCartManager.Remove(reference, quantity);
+            }
+            catch
+            {
+                processResult.Result = (int)ProcessResult.RESULT_STATES.KO;
+                processResult.Message = "Something went wrong";
+                processResult.RedirectTo = "";
+            }
 
-            return Content(result);
+            return Json(processResult);
         }
 
 

@@ -136,7 +136,7 @@ function setupShippingDetailsForm() {
             'FirstName': { required: true, minlength: 3, maxlength: 100 },
             'LastName': { required: true, minlength: 3, maxlength: 100 },
             'Address': { required: true, minlength: 20, maxlength: 500 },
-            'Street': { required: true, minlength: 20, maxlength: 250 },
+            'Street': { required: true, minlength: 3, maxlength: 250 },
             'HouseNumber': { required: true, minlength: 1, maxlength: 10 },
             'ZipCode': { required: true, minlength: 2, maxlength: 20 },
             'CityName': { required: true, minlength: 2, maxlength: 250 },

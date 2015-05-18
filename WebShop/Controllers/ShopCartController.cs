@@ -86,6 +86,12 @@ namespace WebShop.Controllers
 
         public ActionResult Checkout(ShippingDetails shippingDetails)
         {
+            // Access not through the web. Should be valid with the javascript validation.
+            if (!ModelState.IsValid)
+            {
+                throw new Exception();
+            }
+
             ProcessResult processResult = new ProcessResult
             {
                 Result = (int)ProcessResult.RESULT_STATES.OK,

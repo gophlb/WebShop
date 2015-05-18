@@ -122,7 +122,13 @@ function fillAddressShippingDetails() {
 function setupShippingDetailsForm() {
     autocompleteAddress = new google.maps.places.Autocomplete(document.getElementById('AutocompleteAddress'), { types: ['geocode'] });
     google.maps.event.addListener(autocompleteAddress, 'place_changed', function () { fillAddressShippingDetails(); });
-
+    
+    /*
+        * jquery.validate doesn't work fine with emails and accepts xxxxx@xxxx
+            http://stackoverflow.com/questions/23368961/jquery-validation-plugin-not-working-with-email-type-right
+        * stop validating email addresses with regex
+            http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
+    */
     $("#shippingDetailsForm").validate({
         ignore: [],
         rules: {
@@ -197,19 +203,35 @@ function setupShippingDetailsForm() {
 }
 
 
+
+// Show only first error in the attr "title" of the div, colors the border in red
 function showFormErrors(errorMap, errorList) {
-    var errorMessage = "<ul class='errorListForm'>";
+    $("div[id^='section_']").attr("title", "");
+    $("div[id^='section_']").css("border", "1px solid #888");
+
     for (var e in errorMap) {
-        errorMessage += "<li><span class='fa fa-exclamation-circle spanErrorListForm'></span><span>" + errorMap[e] + "</span></li>";
-    }
-    errorMessage += "</ul>";
+        $("#section_" + e).attr("title", errorMap[e]);
+        $("#section_" + e).css("border", "2px solid #f00");
 
-    if (errorMessage !== "<ul class='errorListForm'></ul>") {
-        setTimeout(function () {
-            $("#submitButton").popover({ content: errorMessage, html: true, placement: "top" });
-            $("#submitButton").popover("show");
-        }, 250);
-
-        setTimeout(function () { $("#submitButton").popover("destroy"); }, 3500);
+        break;
     }
 }
+
+
+// Show errors in a popover over the button
+//function showFormErrors(errorMap, errorList) {
+//    var errorMessage = "<ul class='errorListForm'>";
+//    for (var e in errorMap) {
+//        errorMessage += "<li><span class='fa fa-exclamation-circle spanErrorListForm'></span><span>" + errorMap[e] + "</span></li>";
+//    }
+//    errorMessage += "</ul>";
+
+//    if (errorMessage !== "<ul class='errorListForm'></ul>") {
+//        setTimeout(function () {
+//            $("#submitButton").popover({ content: errorMessage, html: true, placement: "top" });
+//            $("#submitButton").popover("show");
+//        }, 250);
+
+//        setTimeout(function () { $("#submitButton").popover("destroy"); }, 3500);
+//    }
+//}

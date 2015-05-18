@@ -2,9 +2,9 @@
 
 <form id="shippingDetailsForm" name="shippingDetailsForm">
     <div class="row">
-        <div class="shippingDetailsFormSection col-xs-12 col-md-2">
+        <div id="section_Title" class="shippingDetailsFormSection col-xs-12 col-md-2">
             <div class="shippingDetailsFormLabel">
-                <label for="Title">Title</label>
+                <label for="Title">Title (*)</label>
             </div>
             <div class="shippingDetailsFormInput">
                 <select name="Title" id="Title">
@@ -15,18 +15,18 @@
             </div>
         </div>
 
-        <div class="shippingDetailsFormSection col-xs-12 col-md-4">
+        <div id="section_FirstName" class="shippingDetailsFormSection col-xs-12 col-md-4">
             <div class="shippingDetailsFormLabel">
-                <label for="FirstName">First name</label>
+                <label for="FirstName">First name (*)</label>
             </div>
             <div class="shippingDetailsFormInput">
                 <input type="text" name="FirstName" id="FirstName" placeholder="Your first name" />
             </div>
         </div>
 
-        <div class="shippingDetailsFormSection col-xs-12 col-md-6">
+        <div id="section_LastName" class="shippingDetailsFormSection col-xs-12 col-md-6">
             <div class="shippingDetailsFormLabel">
-                <label for="LastName">Last name</label>
+                <label for="LastName">Last name (*)</label>
             </div>
             <div class="shippingDetailsFormInput">
                 <input type="text" name="LastName" id="LastName" placeholder="Your last name" />
@@ -35,29 +35,29 @@
     </div>
 
     <div class="row">
-        <div class="shippingDetailsFormSection col-xs-12 ">
+        <div id="section_AutocompleteAddress" class="shippingDetailsFormSection col-xs-12 ">
             <div class="shippingDetailsFormLabel">
                 <label for="AutocompleteAddress">Address</label>
             </div>
             <div class="shippingDetailsFormInput">
-                <input type="text" name="AutocompleteAddress" id="AutocompleteAddress" placeholder="Start typing your address" />
+                <input type="text" name="AutocompleteAddress" id="AutocompleteAddress" placeholder="Start typing your address, it will autocomplete all the related fields" />
             </div>
         </div>
     </div>
 
     <div class="row">
-        <div class="shippingDetailsFormSection col-xs-12 col-md-9">
+        <div id="section_Street" class="shippingDetailsFormSection col-xs-12 col-md-9">
             <div class="shippingDetailsFormLabel">
-                <label for="Street">Street</label>
+                <label for="Street">Street (*)</label>
             </div>
             <div class="shippingDetailsFormInput">
                 <input type="text" name="Street" id="Street" placeholder="Street name" />
             </div>
         </div>
 
-        <div class="shippingDetailsFormSection col-xs-12 col-md-3">
+        <div id="section_HouseNumber" class="shippingDetailsFormSection col-xs-12 col-md-3">
             <div class="shippingDetailsFormLabel">
-                <label for="HouseNumber">House number</label>
+                <label for="HouseNumber">House number (*)</label>
             </div>
             <div class="shippingDetailsFormInput">
                 <input type="text" name="HouseNumber" id="HouseNumber" placeholder="Your house number" />
@@ -66,18 +66,18 @@
     </div>
 
     <div class="row">
-        <div class="shippingDetailsFormSection col-xs-6 col-md-4">
+        <div id="section_ZipCode" class="shippingDetailsFormSection col-xs-6 col-md-4">
             <div class="shippingDetailsFormLabel">
-                <label for="ZipCode">Zip</label>
+                <label for="ZipCode">Zip (*)</label>
             </div>
             <div class="shippingDetailsFormInput">
                 <input type="text" name="ZipCode" id="ZipCode" placeholder="Your zip code" />
             </div>
         </div>
 
-        <div class="shippingDetailsFormSection col-xs-6 col-md-8">
+        <div id="section_CityName" class="shippingDetailsFormSection col-xs-6 col-md-8">
             <div class="shippingDetailsFormLabel">
-                <label for="CityName">City</label>
+                <label for="CityName">City (*)</label>
             </div>
             <div class="shippingDetailsFormInput">
                 <input type="text" name="CityName" id="CityName" placeholder="City name" />
@@ -86,7 +86,7 @@
     </div>
 
     <div class="row">
-        <div class="shippingDetailsFormSection col-xs-12">
+        <div id="section_ExtraInfo" class="shippingDetailsFormSection col-xs-12">
             <div class="shippingDetailsFormLabel">
                 <label for="ExtraInfo">Extra information</label>
             </div>
@@ -97,9 +97,9 @@
     </div>
 
     <div class="row">
-        <div class="shippingDetailsFormSection col-xs-12">
+        <div id="section_Email" class="shippingDetailsFormSection col-xs-12">
             <div class="shippingDetailsFormLabel">
-                <label for="Email">Email</label>
+                <label for="Email">Email (*)</label>
             </div>
             <div class="shippingDetailsFormInput">
                 <input type="email" name="Email" id="Email" placeholder="email@email.com" />
@@ -107,8 +107,13 @@
         </div>
     </div>
 
-    <div class="row pull-right">
-        <button type="submit" id="submitButton" name="submitButton" class="shopCartDetailButton btn btn-primary">Proceed to checkout</button>
+    <div class="row">
+        <div class="col-xs-6">
+            <span>All fields marked with (*) are required</span>
+        </div>
+        <div class="col-xs-6" style="text-align: right; padding-right: 0;">
+            <button type="submit" id="submitButton" name="submitButton" class="shopCartDetailButton btn btn-primary">Proceed to checkout</button>
+        </div>
     </div>
 </form>
 

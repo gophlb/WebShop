@@ -6,7 +6,7 @@ namespace WebShop.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Web Shop";
+            ViewBag.Title = "The RGB Shop";
             return View();
         }
 

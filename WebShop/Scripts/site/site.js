@@ -136,11 +136,11 @@ function setupShippingDetailsForm() {
             'FirstName': { required: true, minlength: 3, maxlength: 100 },
             'LastName': { required: true, minlength: 3, maxlength: 100 },
             'Address': { required: true, minlength: 20, maxlength: 500 },
-            'Street': { required: true },
-            'HouseNumber': { required: true },
-            'ZipCode': { required: true, minlength: 4, maxlength: 10 },
-            'CityName': { required: true, minlength: 2, maxlength: 50 },
-            'Email': { required: true, minlength: 5, maxlength: 150 }
+            'Street': { required: true, minlength: 20, maxlength: 250 },
+            'HouseNumber': { required: true, minlength: 1, maxlength: 10 },
+            'ZipCode': { required: true, minlength: 2, maxlength: 20 },
+            'CityName': { required: true, minlength: 2, maxlength: 250 },
+            'Email': { required: true, minlength: 5, maxlength: 200 }
         },
         messages: {
             'Title': { required: 'We need your title, so we can treat you as you deserve :)' },
@@ -161,24 +161,28 @@ function setupShippingDetailsForm() {
             },
             'Street': {
                 required: 'Are you sure you filled correctly the street?'
+                , minlength: 'Tell us your street, at least 3 characters'
+                , maxlength: 'Are you sure your street is more than 250 characters long?'
             },
             'HouseNumber': {
                 required: 'Are you sure you filled correctly the house number?'
+                , minlength: 'Tell us your house number, at least 1 characters'
+                , maxlength: 'Are you sure your house number is more than 10 characters long?'
             },
             'ZipCode': {
                 required: 'Are you sure you filled correctly the zip code?'
                 , minlength: 'Tell us your zip code, at least 3 characters'
-                , maxlength: 'Are you sure your zip code is more than 10 characters long?'
+                , maxlength: 'Are you sure your zip code is more than 20 characters long?'
             },
             'CityName': {
                 required: 'Are you sure you filled correctly the city?'
                 , minlength: 'Tell us your zip code, at least 2 characters'
-                , maxlength: 'Are you sure your zip code is more than 50 characters long?'
+                , maxlength: 'Are you sure your zip code is more than 250 characters long?'
             },
             'Email': {
                 required: 'We need your email, for further information about tracking'
                 , minlength: 'Tell us your email, at least 5 characters'
-                , maxlength: 'Are you sure your email is more than 150 characters long?'
+                , maxlength: 'Are you sure your email is more than 200 characters long?'
             }
         },
         debug: true,

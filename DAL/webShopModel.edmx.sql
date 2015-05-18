@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/14/2015 16:51:29
--- Generated from EDMX file: D:\z_workspace\WebShop\DAL\webShopModel.edmx
+-- Date Created: 05/18/2015 15:35:05
+-- Generated from EDMX file: C:\Users\dooflow\Desktop\taller\WebShop\DAL\webShopModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -31,17 +31,17 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Addresses]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Addresses];
-GO
 IF OBJECT_ID(N'[dbo].[Clients]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Clients];
 GO
-IF OBJECT_ID(N'[dbo].[OrderLines]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[OrderLines];
+IF OBJECT_ID(N'[dbo].[Addresses]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Addresses];
 GO
 IF OBJECT_ID(N'[dbo].[Orders]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Orders];
+GO
+IF OBJECT_ID(N'[dbo].[OrderLines]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[OrderLines];
 GO
 
 -- --------------------------------------------------
@@ -64,7 +64,7 @@ CREATE TABLE [dbo].[Addresses] (
     [Street] nvarchar(250)  NULL,
     [CityName] nvarchar(250)  NULL,
     [HouseNumber] nvarchar(10)  NULL,
-    [ZipCode] int  NULL,
+    [ZipCode] nvarchar(20)  NULL,
     [ExtraInfo] nvarchar(max)  NULL,
     [Client_Id] int  NOT NULL
 );

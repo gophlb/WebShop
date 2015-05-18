@@ -37,7 +37,28 @@ namespace ProductXmlGenerator
             // Need ordered access (ie: marketing strategy), avoid StringDictionary
             Dictionary<string, string> products = new Dictionary<string, string>()
             {
-                {"Light Golden Rod Yellow","#FAFAD2"}
+                {"Wet Asphalt","#34495E"}
+                ,{"Pomegranate","#C0392B"}
+                ,{"Nephritis","#27AE60"}
+                ,{"Pumpkin","#D35400"}
+                ,{"Peter River","#3498DB"}
+                ,{"Concrete","#95A5A6"}
+                ,{"Amethyst","#9B59B6"}
+                ,{"Night Shade","#2C3E50"}
+                ,{"Emerland","#2ECC71"}
+                ,{"Silver","#BDC3C7"}
+                ,{"Wisteria","#8E44AD"}
+                ,{"Turquoise","#1ABC9C"}
+                ,{"Midnight Blue","#2C3E50"}
+                ,{"Sunflower","#F1C40F"}
+                ,{"Orange","#F39C12"}
+                ,{"Alizarin","#E74C3C"}
+                ,{"Clouds","#ECF0F1"}
+                ,{"Belize Hole","#2980B9"}
+                ,{"Green Sea","#16A085"}
+                ,{"Asbestos","#7F8C8D"}
+                ,{"Carrot","#E67E22"}               
+                ,{"Light Golden Rod Yellow","#FAFAD2"}
                 ,{"Antique White","#FAEBD7"}
                 ,{"Aqua","#00FFFF"}
                 ,{"Deep Pink","#FF1493"}
@@ -68,7 +89,7 @@ namespace ProductXmlGenerator
                 ,{"Dodger Blue","#1E90FF"}
                 ,{"Fire Brick","#B22222"}
                 ,{"Floral White","#FFFAF0"}
-                ,{"Gainsboro","#DCDCDC"}                
+                ,{"Gainsboro","#DCDCDC"}
                 ,{"Light Coral","#F08080"}
                 ,{"Mint Cream","#F5FFFA"}
                 ,{"Gold","#FFD700"}
@@ -97,7 +118,6 @@ namespace ProductXmlGenerator
                 ,{"Dark Red","#8B0000"}
                 ,{"Light Gray","#D3D3D3"}
                 ,{"Yellow Green","#9ACD32"}
-                ,{"Turquoise","#40E0D0"}
                 ,{"Ivory","#FFFFF0"}
                 ,{"Khaki","#F0E68C"}
                 ,{"Olive","#808000"}
@@ -119,7 +139,6 @@ namespace ProductXmlGenerator
                 ,{"Honey Dew","#F0FFF0"}
                 ,{"Hot Pink","#FF69B4"}
                 ,{"Indian Red","#CD5C5C"}
-                ,{"Silver","#C0C0C0"}
                 ,{"Light Sea Green","#20B2AA"}
                 ,{"Slate Blue","#6A5ACD"}
                 ,{"Teal","#008080"}
@@ -152,10 +171,8 @@ namespace ProductXmlGenerator
                 ,{"White","#FFFFFF"}
                 ,{"Medium Slate Blue","#7B68EE"}
                 ,{"Medium Turquoise","#48D1CC"}
-                ,{"Midnight Blue","#191970"}
                 ,{"Navy","#000080"}
                 ,{"Olive Drab","#6B8E23"}
-                ,{"Orange","#FFA500"}
                 ,{"Powder Blue","#B0E0E6"}
                 ,{"Royal Blue","#4169E1"}
                 ,{"Saddle Brown","#8B4513"}
@@ -198,7 +215,7 @@ namespace ProductXmlGenerator
 
             var rnd = new Random(DateTime.Now.Millisecond);
             foreach (KeyValuePair<string, string> product in products)
-            {                
+            {
                 colorPrice = Math.Round(rnd.NextDouble() * MAX_PRICE, 2).ToString();
 
                 xml.Append(

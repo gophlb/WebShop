@@ -24,7 +24,7 @@ namespace DAL
             catch (Exception e)
             {
                 e.Log("");
-                throw e;
+                throw;
             }
         }
     }

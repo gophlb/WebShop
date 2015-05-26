@@ -50,7 +50,7 @@ namespace DAL
                 catch (Exception e)
                 {
                     e.Log("");
-                    throw e;
+                    throw;
                 }
             }
 
@@ -106,7 +106,7 @@ namespace DAL
                 catch (Exception e)
                 {
                     e.Log("");
-                    throw e;
+                    throw;
                 }
             }
             return count;
